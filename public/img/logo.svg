@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="118.826" height="48.957" viewBox="0 0 118.826 48.957">
+  <g id="Logo" transform="translate(-4747 3052.544)">
+    <g id="Component_3_14" data-name="Component 3 – 14" transform="translate(4780.081 -3052.544)">
+      <g id="Group_2" data-name="Group 2" transform="translate(30.407 0.489)">
+        <g id="Icon_ionic-ios-cube" data-name="Icon ionic-ios-cube" transform="translate(0 0)">
+          <path id="Path_1" data-name="Path 1" d="M25.024,7.805,15.288,3.44a.756.756,0,0,0-.614,0L4.932,7.805a.457.457,0,0,0-.022.8l9.714,5.115a.741.741,0,0,0,.707,0L25.046,8.61A.457.457,0,0,0,25.024,7.805Z" transform="translate(-3.671 -3.375)"/>
+          <path id="Path_2" data-name="Path 2" d="M19.521,27.843l9.79-5.181a.439.439,0,0,0,.2-.37V12.241a.4.4,0,0,0-.582-.386L19.135,16.9a.429.429,0,0,0-.228.386V27.468A.41.41,0,0,0,19.521,27.843Z" transform="translate(-6.899 -5.289)"/>
+          <path id="Path_3" data-name="Path 3" d="M3.375,12.242V22.288a.439.439,0,0,0,.2.37l9.79,5.181a.4.4,0,0,0,.609-.37V17.286a.429.429,0,0,0-.228-.386L3.957,11.856A.407.407,0,0,0,3.375,12.242Z" transform="translate(-3.375 -5.289)"/>
+        </g>
+      </g>
+      <path id="Path_6" data-name="Path 6" d="M0,0,.213.095V.2L0,.1Z" transform="translate(0.09 31.208) rotate(-115)" fill="#fff" stroke="#fff" stroke-linecap="square" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Path_7" data-name="Path 7" d="M0,0,.211.095V.2L0,.1Z" transform="translate(0.091 30.917) rotate(-115)" fill="#fff" stroke="#fff" stroke-linecap="square" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Icon_metro-wifi-connect" data-name="Icon metro-wifi-connect" d="M21.61,16.558A13.424,13.424,0,0,1,30.867,20.2l-3.086,2.926a9.058,9.058,0,0,0-12.343,0L12.353,20.2A13.424,13.424,0,0,1,21.61,16.558ZM6.174,14.341A22.3,22.3,0,0,1,21.61,8.279a22.3,22.3,0,0,1,15.436,6.062l-3.087,2.927a17.842,17.842,0,0,0-12.349-4.85,17.842,17.842,0,0,0-12.349,4.85ZM33.507,2.278A30.6,30.6,0,0,1,43.22,8.487l-3.087,2.927A26.763,26.763,0,0,0,21.61,4.139,26.763,26.763,0,0,0,3.087,11.414L0,8.487A30.6,30.6,0,0,1,9.714,2.278a32.2,32.2,0,0,1,23.793,0Z" transform="translate(85.745 11.91) rotate(121)"/>
+    </g>
+    <text id="CubeSite" transform="translate(4747 -3014.587)" font-size="19" font-family="sans-serif, Segoe UI"><tspan x="0" y="0">CubeSite</tspan></text>
+  </g>
+</svg>
