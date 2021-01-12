@@ -1,24 +1,55 @@
 body {
-    margin: 0
+    margin: 0;
 }
-.container {
-    width: 100vw;
-    height: 100vh;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
 
+.base-container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    font-family: sans-serif;
+}
+
+.content {
+    overflow-y: auto;
+    margin-top: 100vw;
+}
+
+.home-container {
+    display: grid;
     align-items: center;
 }
 
-.logo {
-    width: 40%;
-    text-align: center;
+header {
+    background: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3vw;
+    position: fixed;
+    box-shadow: 0em 0 0.5em dimgrey;
 }
 
-.login-container {
+.login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.feed-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-around;
+    margin: 0;
+}
+
+.image-container {
     width: 40%;
+    text-align: center;
 }
 
 form {
@@ -29,6 +60,29 @@ form {
     width: 80%;
     height: 40vh;
 }
+
+.form-container {
+    width: 40%;
+}
+
+.menu-bar {
+    margin-left: 1vw;
+    width: 30%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 button {
     background: #F6F6F6 0% 0% no-repeat padding-box;
@@ -44,6 +98,17 @@ button {
 
 img {
     width: 60%;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 input, textarea {
@@ -74,26 +139,6 @@ input, textarea {
     }
 }
 
-.base-container {
-    overflow-y: auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex;
-    height: 100vh;
-    width: 100vw;
-    font-family: sans-serif;
-}
-
-header {
-    background: lightblue;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5vw;
-    display: flex;
-    position: fixed;
-}
-
 nav {
     width: 100%;
     height: 100%;
@@ -102,11 +147,6 @@ nav {
     align-items: center;
     justify-content: space-around;
     justify-items: center;
-}
-
-.menu-bar {
-    margin-left: 1vw;
-    width: 30%;
 }
 
 nav>img {
@@ -138,14 +178,6 @@ li {
 li>a{
     text-decoration: none;
     color: black;
-}
-
-.feed{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: space-around;
-    margin: 0;
 }
 
 .post{

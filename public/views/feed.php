@@ -6,19 +6,13 @@
 </head>
 <body>
     <div class="base-container">
-        <header>
-            <nav>
-                <div class="menu-bar"><i class="fas fa-bars"></i></div>
-                <img src="public/img/logo.svg">
-                <ul>
-                    <li><a href="">Home Page</a></li>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php include("header.php")?>
         <main>
-            <section class="feed">
+            <section class="feed-page">
+                <form>
+                    <input name="search" placeholder="Search">
+                    <button>Search</button>
+                </form>
                 <div class="post">post 1</div>
                 <div class="post">post 2</div>
                 <div class="post">post 3</div>

@@ -5,10 +5,14 @@ require_once 'AppController.php';
 class DefaultController extends AppController {
     
     public function index() {
-        $this->render('login', ['message' => "Hello World!"]);
+        $this->render('home');
     }
 
     public function feed() {
         $this->render('feed');
+    }
+
+    public function signup() {
+        $this->render('signup');
     }
 }
