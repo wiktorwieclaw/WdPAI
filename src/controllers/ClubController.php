@@ -1,7 +1,7 @@
 <?php
 
 require_once 'AppController.php';
-require_once __DIR__.'/../models/CLub.php';
+require_once __DIR__.'/../models/Club.php';
 
 class ClubController extends AppController {
 
@@ -18,9 +18,8 @@ class ClubController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
             $club = new Club($_POST['title'], $_POST['description'], $_POST['file']['name']);
-            return $this->render("feed", ['messeges' => $this->messages]);
+            return $this->render("clubs", ['messeges' => $this->messages, 'club' => $club]);
         }
-        // TODO wyswietlic club
         $this->render('add-club', ['messeges' => $this->messages]);
     }
 

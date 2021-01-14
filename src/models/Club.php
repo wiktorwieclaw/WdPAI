@@ -7,6 +7,13 @@ class Club
     private $description;
     private $image;
 
+    public function __construct($title, $description, $image)
+    {
+        $this->title = $title;
+        $this->description = $description;
+        $this->image = $image;
+    }
+
     public function getTitle() : string {
         return $this->title;
     }

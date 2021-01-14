@@ -6,17 +6,7 @@
 </head>
 <body>
 <div class="base-container">
-    <header>
-        <nav>
-            <div class="menu-bar"><i class="fas fa-bars"></i></div>
-            <img src="public/img/logo.svg">
-            <ul>
-                <li><a href="">Home Page</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include("header.php")?>
     <main>
         <section class="club-form">
             <h1>UPLOAD</h1>
@@ -30,8 +20,7 @@
                 ?>
                 <input name="title" type="text" placeholder="title">
                 <textarea name="description" rows="5" placeholder="description"></textarea>
-
-                <input type="file" name="file">
+                <input name="file" type="file">
                 <button type="submit">send</button>
             </form>
         </section>

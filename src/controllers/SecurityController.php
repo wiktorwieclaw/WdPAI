@@ -6,6 +6,7 @@ require_once __DIR__.'/../models/User.php';
 class SecurityController extends AppController {
 
     public function login() {
+        //TODO delete later
         $user = new User('jsnow@pk.edu.pl', 'admin', 'John', 'Snow');
 
         if(!$this->isPost()) {
