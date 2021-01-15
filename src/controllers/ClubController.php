@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Club.php';
+require_once __DIR__.'/../repository/ClubRepository.php';
 
 class ClubController extends AppController {
 
@@ -10,6 +11,13 @@ class ClubController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $messages = [];
+    private $clubRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->clubRepository = new ClubRepository();
+    }
 
     public function addClub() {
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
@@ -17,7 +25,11 @@ class ClubController extends AppController {
                 $_FILES['file']['tmp_name'],
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
-            $club = new Club($_POST['title'], $_POST['description'], $_POST['file']['name']);
+
+            $club = new Club($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+            $this->clubRepository->addClub($club);
+
+            // TODO render all clubs that are in the database
             return $this->render("clubs", ['messeges' => $this->messages, 'club' => $club]);
         }
         $this->render('add-club', ['messeges' => $this->messages]);
