@@ -14,13 +14,18 @@ class SecurityController extends AppController {
         $this->userRepository = new UserRepository();
     }
 
-    public function login() {
+    public function login() { // TODO this func is too long
+        if(isset($_COOKIE['userSession'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/feed");
+        }
+
         if(!$this->isPost()) {
             return $this->render('login');
         }
 
         $email = $_POST['email'];
-        $password = md5($_POST['password']); // hash with better method
+        $password = $_POST['password'];
 
         $user = $this->userRepository->getUser($email);
 
@@ -32,15 +37,22 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['User with this email doesn\'t exist.']]);
         }
 
-        if($user->getPassword() !== $password) {
+        if(!password_verify($password, $user->getPassword())) {
             return $this->render('login', ['messages' => ['Wrong password.']]);
         }
+
+        setcookie('userSession', $user->getEmail(), time()+3600);
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/feed");
     }
 
     public function signup() {
+        if(isset($_COOKIE['userSession'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/feed");
+        }
+
         if(!$this->isPost()) {
             return $this->render('signup');
         }
@@ -51,12 +63,16 @@ class SecurityController extends AppController {
         $name = $_POST['name'];
         $surname = $_POST['surname'];
 
+        if($this->userRepository->getUser($email) !== null) {
+            return $this->render('signup', ['messages' => ["Account with this email already exists"]]);
+        }
+
         if($password !== $confirmedPassword) {
             return $this->render('signup', ['messages' => ["Please provide proper password"]]);
         }
 
         // TODO use better hash function
-        $user = new User($email, md5($password), $name, $surname);
+        $user = new User($email, password_hash($password, PASSWORD_DEFAULT), $name, $surname);
 
         $this->userRepository->addUser($user);
 

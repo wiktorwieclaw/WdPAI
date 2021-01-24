@@ -15,6 +15,8 @@
                     around the world can share information and help each other.
                 </div>
                 <img src="public/img/cubesat-in-space.svg">
+                <a href="login">LOGIN</a>
+                <a href="signup">SIGN UP</a>
                 <img src="public/img/cubesat-in-space.svg">
                 <div>
                     <h1>Lorem ipsum</h1>
