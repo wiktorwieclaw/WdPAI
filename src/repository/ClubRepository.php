@@ -25,6 +25,26 @@ class ClubRepository extends Repository
         );
     }
 
+    public function getClubs(): array {
+        $result = [];
+
+        $statement = $this->database->connect()->prepare('
+            SELECT * FROM clubs
+        ');
+        $statement->execute();
+        $clubs = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($clubs as $club) {
+            $result[] = new Club(
+              $club['name'],
+              $club['description'],
+              $club['image']
+            );
+        }
+
+        return $result;
+    }
+
     public function addClub(Club $club) : void {
         $date = new DateTime(); // TODO add creation time to table
         $statement = $this->database->connect()->prepare('

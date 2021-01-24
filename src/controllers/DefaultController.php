@@ -15,8 +15,4 @@ class DefaultController extends AppController {
     public function signup() {
         $this->render('signup');
     }
-
-    public function clubs() {
-        $this->render('clubs');
-    }
 }

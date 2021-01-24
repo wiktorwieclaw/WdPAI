@@ -9,20 +9,15 @@
     <?php include("header.php")?>
     <div class="content">
         <section class="clubs">
+            <?php foreach ($clubs as $club): ?>
             <div class="club">
                 <div class="image-container">
-                    <img src="public/uploads/test.png">
-                </div>
-                <h3>COSMO</h3>
-                <p>Poland</p>
-            </div>
-            <div class="club">
-                <div class="image-container">
-                    <img src="public/uploads/full.png">
+                    <img src="public/uploads/<?= $club->getImage() ?>">
                 </div>
                 <h3><?= $club->getTitle() ?></h3>
                 <p><?= $club->getDescription() ?></p>
             </div>
+            <?php endforeach; ?>
         </section>
     </div>
 </div>

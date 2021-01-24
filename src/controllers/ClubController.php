@@ -19,6 +19,11 @@ class ClubController extends AppController {
         $this->clubRepository = new ClubRepository();
     }
 
+    public function clubs() {
+        $clubs = $this->clubRepository->getClubs();
+        $this->render('clubs', ['clubs' => $clubs]);
+    }
+
     public function addClub() {
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
@@ -29,8 +34,7 @@ class ClubController extends AppController {
             $club = new Club($_POST['title'], $_POST['description'], $_FILES['file']['name']);
             $this->clubRepository->addClub($club);
 
-            // TODO render all clubs that are in the database
-            return $this->render("clubs", ['messeges' => $this->messages, 'club' => $club]);
+            $this->clubs();
         }
         $this->render('add-club', ['messeges' => $this->messages]);
     }
