@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <head>
-    <link rel = "stylesheet" type="text/css" href="public/css/style.css">
-    <script src="https://kit.fontawesome.com/917ffdbb3f.js" crossorigin="anonymous"></script>
+    <?php include("head.php")?>
     <title>HOME</title>
 </head>
 <body>
     <div class="base-container">
-        <?php include("header.php")?>
+        <header>
+            <nav>
+                <img src="public/img/logo.svg">
+                <ul>
+                    <li><a href="">Home Page</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
         <div class="content">
             <div class="home-container">
                 <div>

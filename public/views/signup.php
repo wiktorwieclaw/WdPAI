@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <head>
-    <link rel = "stylesheet" type="text/css" href="public/css/style.css">
+    <?php include("head.php")?>
     <script type="text/javascript" src="./public/js/script.js" defer></script>
-    <script src="https://kit.fontawesome.com/917ffdbb3f.js" crossorigin="anonymous"></script>
     <title>SIGNUP</title>
 </head>
 <body>

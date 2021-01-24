@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel = "stylesheet" type="text/css" href="public/css/style.css">
-    <script src="https://kit.fontawesome.com/917ffdbb3f.js" crossorigin="anonymous"></script>
+    <?php include("head.php")?>
     <title>CLUBS</title>
 </head>
 <body>
