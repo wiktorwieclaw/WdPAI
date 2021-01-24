@@ -28,6 +28,7 @@ header {
     height: 5vh;
     position: fixed;
     box-shadow: 0em 0 0.5em dimgrey;
+    z-index: 1;
 }
 
 .login {
@@ -77,13 +78,79 @@ form {
     width: 60%;
 }
 
-.menu-bar {
-    margin-left: 1vw;
-    width: 30%;
+.hamburger-container {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+}
+.hamburger{
+    position: relative;
+    border: none;
+    outline: none;
+    background: black;
+    height: 8px;
+    border-radius: 1em;
+    padding: 0;
+    margin-left: 1em;
+    width: 2.5em;
+    display: block;
+    transition: transform 0.5s, rotate 0.5s;
+}
+.hamburger::after, .hamburger::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: black;
+    height: 100%;
+    border-radius: 1em;
+    padding: 0;
+    width: 100%;
+    transition: inherit;
+}
+.hamburger::after{
+    transform: translateY(16px);
+}
+.hamburger::before{
+    transform: translateY(-16px);
+}
+.hamburger.open {
+    transform: translateX(-75px);
+    background: transparent;
+}
+.hamburger.open::after {
+    transform: translateX(75px) rotate(-45deg);
+}
+.hamburger.open::before {
+    transform: translateX(75px) rotate(45deg);
 }
 
+.side-bar {
+    width:30vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left: -100%;
+    background-color: lightgrey;
+    z-index: 0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    transition: left 0.3s, visibility 0.3s;
+    visibility: hidden;
+}
 
+.side-bar-show {
+    left: 0;
+    transition: left 0.3s, visibility 0.3s;
+    visibility: visible;
+}
 
+.side-bar>ul {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
 
 
 

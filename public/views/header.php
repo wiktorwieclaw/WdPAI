@@ -1,6 +1,9 @@
+<!--<i class="fas fa-bars"></i>-->
 <header>
     <nav>
-        <div class="menu-bar"><i class="fas fa-bars"></i></div>
+        <div class="hamburger-container">
+            <div class="hamburger"></div>
+        </div>
         <img src="public/img/logo.svg">
         <ul>
             <li><a href="">Home Page</a></li>
@@ -9,4 +12,9 @@
         </ul>
     </nav>
 </header>
+<div class="side-bar">
+    <ul>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</div>
 

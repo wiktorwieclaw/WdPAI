@@ -78,4 +78,12 @@ class SecurityController extends AppController {
 
         return $this->render('login', ['messages' => ['You\'ve been succesfully registered!']]);
     }
+
+    public function logout() {
+        if(isset($_COOKIE['userSession'])) {
+            setcookie('userSession', null, time() - 1000);
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/");
+        }
+    }
 }
