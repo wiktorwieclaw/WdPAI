@@ -12,5 +12,6 @@ Routing::post('login', 'SecurityController');
 Routing::post('addClub', 'ClubController');
 Routing::post('signup', 'SecurityController');
 Routing::post('logout', 'SecurityController');
+Routing::post('search', 'ClubController');
 
 Routing::run($path);

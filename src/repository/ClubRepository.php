@@ -61,4 +61,16 @@ class ClubRepository extends Repository
             $club->getImage()
         ]);
     }
+
+    public function getClubByTitle(string $searchString) {
+        $searchString = '%'.strtolower($searchString).'%';
+
+        $statememt = $this->database->connect()->prepare('
+            SELECT * FROM clubs WHERE LOWER(name) LIKE :search OR LOWER(description) LIKE :search
+        ');
+        $statememt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $statememt->execute();
+
+        return $statememt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
