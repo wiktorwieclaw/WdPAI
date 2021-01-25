@@ -27,7 +27,7 @@ class SecurityController extends AppController {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $user = $this->userRepository->getUser($email);
+        $user = $this->userRepository->getUserByEmail($email);
 
         if(!$user) {
             return $this->render('login', ['messages' => ['User doesnt exist.']]);
@@ -42,6 +42,7 @@ class SecurityController extends AppController {
         }
 
         setcookie('userSession', $user->getEmail(), time()+3600);
+        setcookie('userId', $user->getId(), time()+3600);
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/feed");
@@ -63,7 +64,7 @@ class SecurityController extends AppController {
         $name = $_POST['name'];
         $surname = $_POST['surname'];
 
-        if($this->userRepository->getUser($email) !== null) {
+        if($this->userRepository->getUserByEmail($email) !== null) {
             return $this->render('signup', ['messages' => ["Account with this email already exists"]]);
         }
 

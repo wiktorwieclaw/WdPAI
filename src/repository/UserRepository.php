@@ -5,7 +5,7 @@ require_once __DIR__.'/../models/User.php';
 
 class UserRepository extends Repository
 {
-    public function getUser(string $email) : ?User {
+    public function getUserByEmail(string $email) : ?User {
         $statement = $this->database->connect()->prepare('
             SELECT * FROM users u LEFT JOIN users_details ud 
             ON u.id_user_details = ud.id WHERE email = :email
@@ -16,11 +16,29 @@ class UserRepository extends Repository
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
         if($user == false) {
+            return null; // TODO Exception
+        }
+
+        return new User(
+            $user['email'], $user['password'], $user['name'], $user['surname'], $user['id_users']
+        );
+    }
+
+    public function getUserDetailsById(int $id) : ?User {
+        $statement = $this->database->connect()->prepare('
+            SELECT * FROM users u JOIN users_details ON u.id_user_details = users_details.id WHERE u.id_users = :id
+        ');
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if($user == false) {
             return null;
         }
 
         return new User(
-            $user['email'], $user['password'], $user['name'], $user['surname']
+            $user['email'], $user['password'], $user['name'], $user['surname'], $user['id_users']
         );
     }
 

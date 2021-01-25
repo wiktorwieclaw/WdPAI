@@ -8,6 +8,7 @@ $path = parse_url($path, PHP_URL_PATH);
 Routing::get('', 'DefaultController');
 Routing::get('feed', 'DefaultController');
 Routing::get('clubs', 'ClubController');
+Routing::get('profile', 'ProfileController');
 Routing::post('login', 'SecurityController');
 Routing::post('addClub', 'ClubController');
 Routing::post('signup', 'SecurityController');
