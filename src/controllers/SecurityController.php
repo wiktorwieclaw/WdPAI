@@ -16,8 +16,7 @@ class SecurityController extends AppController {
 
     public function login() { // TODO this func is too long
         if(isset($_COOKIE['userSession'])) {
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/feed");
+            $this->goToSubpage("clubs");
         }
 
         if(!$this->isPost()) {
@@ -51,7 +50,7 @@ class SecurityController extends AppController {
     public function signup() {
         if(isset($_COOKIE['userSession'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/feed");
+            header("Location: {$url}/clubs");
         }
 
         if(!$this->isPost()) {

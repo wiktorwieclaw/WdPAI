@@ -4,8 +4,8 @@
         <div class="hamburger-container">
             <div class="hamburger"></div>
         </div>
-        <img src="/public/img/logo.svg">
-        <ul>
+        <img id="logo" src="/public/img/logo.svg">
+        <ul id="top-bar-list">
             <li><a href="">Home Page</a></li>
             <li><a href="">About Us</a></li>
             <li><a href="">Contact</a></li>

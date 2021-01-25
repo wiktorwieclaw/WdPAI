@@ -1,0 +1,79 @@
+header {
+    display: flex;
+    background: white;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    box-shadow: 0 0 0.5em dimgrey;
+    z-index: 1;
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: center;
+}
+
+nav>img {
+    height: 90%;
+}
+
+#logo {
+    position: absolute;
+    width: 8em;
+    left: calc(50% - 4em);
+}
+
+.hamburger-container {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 0.7em;
+}
+
+.hamburger{
+    justify-self: flex-start;
+    position: relative;
+    background: black;
+    height: 7px;
+    border-radius: 1em;
+    width: 2.5em;
+    display: block;
+    transition: transform 0.5s, rotate 0.5s;
+}
+
+.hamburger::after, .hamburger::before{
+    content: '';
+    position: absolute;
+    background: black;
+    height: 100%;
+    border-radius: 1em;
+    width: 100%;
+    transition: inherit;
+}
+
+.hamburger::after{
+    transform: translateY(16px);
+}
+
+.hamburger::before{
+    transform: translateY(-16px);
+}
+
+.hamburger.open {
+    transform: translateX(-75px);
+    background: transparent;
+}
+
+.hamburger.open::after {
+    transform: translateX(75px) rotate(-45deg);
+}
+
+.hamburger.open::before {
+    transform: translateX(75px) rotate(45deg);
+}

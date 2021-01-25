@@ -24,6 +24,11 @@ class AppController {
         return $this->request === 'POST';
     }
 
+    protected function goToSubpage(string $subpage) {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/".$subpage);
+    }
+
     protected function render(string $template = null, array $variables = []) {
         $templatePath = 'public/views/'.$template.'.php';
         $output = 'File not found';

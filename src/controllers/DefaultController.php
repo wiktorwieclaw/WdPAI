@@ -6,7 +6,7 @@ class DefaultController extends AppController {
     
     public function index() {
         if(isset($_COOKIE['userSession'])) {
-            $this->feed();
+            $this->goToSubpage('clubs');
         }
         else {
             $this->render('home');
