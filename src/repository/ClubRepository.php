@@ -38,7 +38,8 @@ class ClubRepository extends Repository
             $result[] = new Club(
               $club['name'],
               $club['description'],
-              $club['image']
+              $club['image'],
+                $club['id']
             );
         }
 
@@ -52,12 +53,9 @@ class ClubRepository extends Repository
             VALUES(?, ?, ?)
        ');
 
-        //$assignedById = 1;
         $statement->execute([
             $club->getTitle(),
             $club->getDescription(),
-            //$date->format('Y-m-d'),
-            //$assignedById,
             $club->getImage()
         ]);
     }

@@ -12,7 +12,7 @@
             <input name="search" placeholder="Search">
             <div class="clubs-container">
                 <?php foreach ($clubs as $club): ?>
-                <div class="club">
+                <div id="<?=$club->getId() ?>" class="club">
                     <div class="image-container">
                         <img src="public/uploads/<?= $club->getImage() ?>">
                     </div>

@@ -6,12 +6,14 @@ class Club
     private $title;
     private $description;
     private $image;
+    private $id;
 
-    public function __construct($title, $description, $image)
+    public function __construct($title, $description, $image, $id = null)
     {
         $this->title = $title;
         $this->description = $description;
         $this->image = $image;
+        $this->id = $id;
     }
 
     public function getTitle() : string {
@@ -36,6 +38,16 @@ class Club
 
     public function setImage(string $image) {
         $this->image = $image;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id) : void
+    {
+        $this->id = $id;
     }
 
 
