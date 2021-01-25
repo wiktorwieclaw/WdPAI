@@ -12,13 +12,13 @@
             <input name="search" placeholder="Search">
             <div class="clubs-container">
                 <?php foreach ($clubs as $club): ?>
-                <div id="<?=$club->getId() ?>" class="club">
+                <a id="<?=$club->getId() ?>" class="club" href="/club/<?=$club->getId() ?>">
                     <div class="image-container">
                         <img src="public/uploads/<?= $club->getImage() ?>">
                     </div>
                     <h3><?= $club->getTitle() ?></h3>
                     <p><?= $club->getDescription() ?></p>
-                </div>
+                </a>
                 <?php endforeach; ?>
             </div>
         </section>
@@ -27,11 +27,11 @@
 </body>
 
 <template id="club-template">
-    <div id="" class="club">
+    <a id="" class="club">
         <div class="image-container">
             <img src="">
         </div>
         <h3>title</h3>
         <p>description</p>
-    </div>
+    </a>
 </template>

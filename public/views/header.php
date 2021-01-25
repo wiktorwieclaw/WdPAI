@@ -4,7 +4,7 @@
         <div class="hamburger-container">
             <div class="hamburger"></div>
         </div>
-        <img src="public/img/logo.svg">
+        <img src="/public/img/logo.svg">
         <ul>
             <li><a href="">Home Page</a></li>
             <li><a href="">About Us</a></li>

@@ -19,6 +19,12 @@ class ClubController extends AppController {
         $this->clubRepository = new ClubRepository();
     }
 
+    public function club($id) {
+        $club = $this->clubRepository->getClub(intval($id));
+        $members = $this->clubRepository->getClubMembers(intval($id));
+        return $this->render("club", ["club" => $club, "members" => $members]);
+    }
+
     public function clubs() {
         $clubs = $this->clubRepository->getClubs();
         $this->render('clubs', ['clubs' => $clubs]);
@@ -51,6 +57,21 @@ class ClubController extends AppController {
 
              echo json_encode($this->clubRepository->getClubByTitle($decoded['search']));
          }
+    }
+
+    public function join() {
+        $constentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if($constentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content,true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            $result = $this->clubRepository->addMemberToClub($decoded['club'], $decoded['userId']);
+            echo json_encode($result);
+        }
     }
 
     private function validate(array $file) : bool {

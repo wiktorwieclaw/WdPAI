@@ -32,8 +32,9 @@ function createClub(club) {
     const template = document.querySelector("#club-template");
     const clone = template.content.cloneNode(true);
 
-    const div = clone.querySelector("div");
-    div.id = club.id;
+    const a = clone.querySelector("a");
+    a.id = club.id_clubs;
+    a.href = `/club/${club.id_clubs}`;
 
     const image = clone.querySelector("img");
     image.src = `/public/uploads/${club.image}`;

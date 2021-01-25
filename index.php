@@ -9,10 +9,12 @@ Routing::get('', 'DefaultController');
 Routing::get('feed', 'DefaultController');
 Routing::get('clubs', 'ClubController');
 Routing::get('profile', 'ProfileController');
+Routing::get('club', 'ClubController');
 Routing::post('login', 'SecurityController');
 Routing::post('addClub', 'ClubController');
 Routing::post('signup', 'SecurityController');
 Routing::post('logout', 'SecurityController');
 Routing::post('search', 'ClubController');
+Routing::post('join', 'ClubController');
 
 Routing::run($path);
