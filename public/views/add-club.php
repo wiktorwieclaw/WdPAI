@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <head>
-    <?php include("head.php")?>
+    <?php include("head.php") ?>
     <title>ADD CLUB</title>
 </head>
 <body>
 <div class="base-container">
-    <?php include("header.php")?>
+    <?php include("header.php") ?>
     <main>
         <section class="club-form">
             <h1>UPLOAD</h1>
             <form action="addClub" method="POST" ENCTYPE="multipart/form-data">
                 <?php
-                if(isset($messages)) {
+                if (isset($messages)) {
                     foreach ($messages as $message) {
                         echo $message;
                     }

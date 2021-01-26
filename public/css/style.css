@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    padding: 0;
 }
 
 .base-container {
@@ -15,19 +16,6 @@ body {
     margin-top: 50px;
 }
 
-.home-container {
-    display: grid;
-    align-items: center;
-}
-
-.login {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 95vh;
-    width: 100%;
-}
-
 .feed-page{
     display: flex;
     flex-direction: column;
@@ -36,35 +24,12 @@ body {
     margin: 0;
 }
 
-.image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 80%;
-}
-
-.image-container>img{
-    width: 100%;
-    height: 100%;
-}
-
-.form-container {
-    display: flex;
-    justify-content: center;
-    width: 50%;
-}
-
-.form-container>form {
-    padding-right: 10vw;
-}
-
 form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 20vw;
 }
 
 .side-bar {
@@ -74,7 +39,7 @@ form {
     top:0;
     left: -100%;
     background-color: lightgrey;
-    z-index: 0;
+    z-index: 1;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -95,25 +60,20 @@ form {
 }
 
 button {
-    background: #F6F6F6 0% 0% no-repeat padding-box;
+    background: #EFEFEF 0 0 no-repeat padding-box;
     border-radius: 4px;
     opacity: 1;
-
-    width: 70%;
+    width: 100%;
     border: none;
     color: black;
     margin: 1em;
     line-height: 3.0em;
 }
 
-img {
-    width: 60%;
-}
-
 .container {
     width: 100vw;
     height: 100vh;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0 0 no-repeat padding-box;
 
     display: flex;
     flex-direction: row;
@@ -126,7 +86,7 @@ input, textarea {
     border: 1px solid black;
     padding: 1em;
     margin: 1em;
-    width: 50%;
+    width: 70%;
     height: 5%;
 }
 
@@ -142,18 +102,6 @@ input, textarea {
     .login-container, .logo {
         width: 100%;
     }
-
-    form {
-        margin: auto;
-    }
-}
-
-main {
-    margin: auto;
-    width: 80vw;
-    display: flex;
-    justify-content: center;
-    margin-top: 5vw;
 }
 
 ul {

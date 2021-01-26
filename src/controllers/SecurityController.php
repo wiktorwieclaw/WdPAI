@@ -6,7 +6,8 @@ require_once __DIR__.'/../repository/UserRepository.php';
 
 class SecurityController extends AppController {
 
-    private $userRepository;
+    // TODO make registering more secure
+    private UserRepository $userRepository;
 
     public function __construct()
     {
@@ -71,7 +72,6 @@ class SecurityController extends AppController {
             return $this->render('signup', ['messages' => ["Please provide proper password"]]);
         }
 
-        // TODO use better hash function
         $user = new User($email, password_hash($password, PASSWORD_DEFAULT), $name, $surname);
 
         $this->userRepository->addUser($user);

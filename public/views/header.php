@@ -1,4 +1,3 @@
-<!--<i class="fas fa-bars"></i>-->
 <header>
     <nav>
         <div class="hamburger-container">

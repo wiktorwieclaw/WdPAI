@@ -6,7 +6,7 @@ header {
     height: 50px;
     position: fixed;
     box-shadow: 0 0 0.5em dimgrey;
-    z-index: 1;
+    z-index: 2;
 }
 
 nav {
@@ -19,7 +19,7 @@ nav {
     justify-items: center;
 }
 
-nav>img {
+nav > img {
     height: 90%;
 }
 
@@ -36,18 +36,18 @@ nav>img {
     padding-left: 0.7em;
 }
 
-.hamburger{
+.hamburger {
     justify-self: flex-start;
     position: relative;
     background: black;
-    height: 7px;
+    height: 6px;
     border-radius: 1em;
-    width: 2.5em;
+    width: 2.2em;
     display: block;
     transition: transform 0.5s, rotate 0.5s;
 }
 
-.hamburger::after, .hamburger::before{
+.hamburger::after, .hamburger::before {
     content: '';
     position: absolute;
     background: black;
@@ -57,12 +57,12 @@ nav>img {
     transition: inherit;
 }
 
-.hamburger::after{
-    transform: translateY(16px);
+.hamburger::after {
+    transform: translateY(12px);
 }
 
-.hamburger::before{
-    transform: translateY(-16px);
+.hamburger::before {
+    transform: translateY(-12px);
 }
 
 .hamburger.open {
