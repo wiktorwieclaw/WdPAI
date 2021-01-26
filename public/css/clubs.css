@@ -1,0 +1,46 @@
+.clubs-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.clubs-container #search-bar {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+}
+
+#search-bar > input {
+    width: 70%;
+}
+
+#search-bar > button {
+    width: 30%;
+    height: 4vh;
+}
+
+.clubs-grid {
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em;
+    padding: 2em;
+}
+
+.clubs-grid img {
+    border-radius: 50%;
+    width: 10vh;
+    max-height: 5em;
+    max-width: 5em;
+}
+
+.club {
+    border: 1px solid black;
+    width: 30vw;
+    height: 15vw;
+    display: block;
+}

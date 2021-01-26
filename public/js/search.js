@@ -1,24 +1,33 @@
 const search = document.querySelector('input[placeholder="Search"]');
-const clubsContainer = document.querySelector('.clubs-container');
+const searchButton = document.querySelector('#search-button');
+const clubsContainer = document.querySelector('.clubs-grid');
 
-search.addEventListener("keyup", function(event) {
-   if(event.key === "Enter") {
-       event.preventDefault();
+function handleSearch(data) {
+    fetch("/search", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+    }).then(function (response) {
+        return response.json();
+    }).then(function (clubs) {
+        clubsContainer.innerHTML = "";
+        loadClubs(clubs)
+    });
+}
 
-       const data = {search: this.value};
-       fetch("/search", {
-           method: "POST",
-           headers: {
-               'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(data),
-       }).then(function (response) {
-           return response.json();
-       }).then(function (clubs){
-           clubsContainer.innerHTML = "";
-           loadClubs(clubs)
-       });
-   }
+search.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        const data = {search: this.value};
+        return handleSearch(data)
+    }
+});
+
+searchButton.addEventListener('click', function (event) {
+    const data = {search: search.value};
+    return handleSearch(data);
 });
 
 function loadClubs(clubs) {
