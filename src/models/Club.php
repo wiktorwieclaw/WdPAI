@@ -3,12 +3,12 @@
 
 class Club
 {
-    private $title;
-    private $description;
-    private $image;
-    private $id;
+    private string $title;
+    private string $description;
+    private string $image;
+    private ?int $id;
 
-    public function __construct($title, $description, $image, $id = null)
+    public function __construct(string $title, string $description, string $image, int $id = null)
     {
         $this->title = $title;
         $this->description = $description;
@@ -20,7 +20,7 @@ class Club
         return $this->title;
     }
 
-    public function setTitle(string $title) {
+    public function setTitle(string $title): void {
         $this->title = $title;
     }
 
@@ -28,7 +28,7 @@ class Club
         return $this->description;
     }
 
-    public function setDescription(string $description) {
+    public function setDescription(string $description): void {
         $this->description = $description;
     }
 
@@ -36,17 +36,15 @@ class Club
         return $this->image;
     }
 
-    public function setImage(string $image) {
+    public function setImage(string $image): void {
         $this->image = $image;
     }
 
-    public function getId()
-    {
+    public function getId(): ?int {
         return $this->id;
     }
 
-    public function setId($id) : void
-    {
+    public function setId($id): void {
         $this->id = $id;
     }
 

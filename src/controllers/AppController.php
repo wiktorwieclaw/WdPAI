@@ -5,15 +5,9 @@ require_once __DIR__.'/../repository/UserRepository.php';
 class AppController {
 
     private $request;
-    private $userRepo;
 
     public function __construct() {
         $this->request = $_SERVER['REQUEST_METHOD'];
-        $this->userRepo = new UserRepository();
-    }
-
-    protected function getUserRepo() {
-        return $this->userRepo;
     }
 
     protected function isGet() : bool {
@@ -40,5 +34,9 @@ class AppController {
             $output = ob_get_clean();
         }
         print $output;
+    }
+
+    protected function isUserSession(): bool {
+        return isset($_COOKIE['userSession']);
     }
 }

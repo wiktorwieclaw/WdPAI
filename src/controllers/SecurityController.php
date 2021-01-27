@@ -15,8 +15,12 @@ class SecurityController extends AppController {
         $this->userRepository = new UserRepository();
     }
 
+    public function isAdmin(int $id): bool {
+        // TODO
+    }
+
     public function login() { // TODO this func is too long
-        if(isset($_COOKIE['userSession'])) {
+        if($this->isUserSession()) {
             $this->goToSubpage("clubs");
         }
 
@@ -44,14 +48,12 @@ class SecurityController extends AppController {
         setcookie('userSession', $user->getEmail(), time()+3600);
         setcookie('userId', $user->getId(), time()+3600);
 
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/feed");
+        $this->goToSubpage("clubs");
     }
 
     public function signup() {
-        if(isset($_COOKIE['userSession'])) {
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/clubs");
+        if($this->isUserSession()) {
+            $this->goToSubpage("clubs");
         }
 
         if(!$this->isPost()) {
@@ -73,17 +75,15 @@ class SecurityController extends AppController {
         }
 
         $user = new User($email, password_hash($password, PASSWORD_DEFAULT), $name, $surname);
-
         $this->userRepository->addUser($user);
 
         return $this->render('login', ['messages' => ['You\'ve been succesfully registered!']]);
     }
 
     public function logout() {
-        if(isset($_COOKIE['userSession'])) {
+        if($this->isUserSession()) {
             setcookie('userSession', null, time() - 1000);
         }
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/");
+        $this->goToSubpage('');
     }
 }

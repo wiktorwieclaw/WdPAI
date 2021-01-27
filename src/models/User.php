@@ -3,11 +3,11 @@
 
 class User
 {
-    private $email;
-    private $password;
-    private $name;
-    private $surname;
-    private $id;
+    private string $email;
+    private string $password;
+    private string $name;
+    private string $surname;
+    private ?int $id;
 
     public function __construct(string $email, string $password, string $name, string $surname, $id = null) {
         $this->email = $email;

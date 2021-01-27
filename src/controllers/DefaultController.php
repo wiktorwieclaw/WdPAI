@@ -5,7 +5,7 @@ require_once 'AppController.php';
 class DefaultController extends AppController {
     
     public function index() {
-        if(isset($_COOKIE['userSession'])) {
+        if($this->isUserSession()) {
             $this->goToSubpage('clubs');
         }
         else {
@@ -16,5 +16,4 @@ class DefaultController extends AppController {
     public function feed() {
         $this->render('feed');
     }
-
 }

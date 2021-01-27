@@ -10,8 +10,8 @@ class ClubController extends AppController {
     const SUPPORTED_TYPES = ['image/png', 'image/jpg'];
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
-    private $messages = [];
-    private $clubRepository;
+    private array $messages = [];
+    private ClubRepository $clubRepository;
 
     public function __construct()
     {
@@ -19,10 +19,19 @@ class ClubController extends AppController {
         $this->clubRepository = new ClubRepository();
     }
 
-    public function club($id) {
-        $club = $this->clubRepository->getClub(intval($id));
-        $members = $this->clubRepository->getClubMembers(intval($id));
-        return $this->render("club", ["club" => $club, "members" => $members]);
+    public function club(string $id) {
+        if(empty($id)) {
+            $this->goToSubpage("clubs");
+        }
+
+        $club = $this->clubRepository->getClub($id);
+
+        if($club === null) {
+            $this->goToSubpage("clubs");
+        }
+
+        $members = $this->clubRepository->getClubMembers($id);
+        $this->render("club", ["club" => $club, "members" => $members]);
     }
 
     public function clubs() {
@@ -60,9 +69,9 @@ class ClubController extends AppController {
     }
 
     public function join() {
-        $constentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
-        if($constentType === "application/json") {
+        if($contentType === "application/json") {
             $content = trim(file_get_contents("php://input"));
             $decoded = json_decode($content,true);
 
@@ -76,11 +85,11 @@ class ClubController extends AppController {
 
     private function validate(array $file) : bool {
         if($file['size'] > self::MAX_FILE_SIZE) {
-            $this->messages = 'File is too large.';
+            $this->messages[] = 'File is too large.';
             return false;
         }
 
-        if(!isset($file['type']) && !is_array($file['type'], self::SUPPORTED_TYPES)) {
+        if(!isset($file['type']) || !in_array($file['type'], self::SUPPORTED_TYPES)) {
             $this->messages[] = 'File type not supported.';
             return false;
         }

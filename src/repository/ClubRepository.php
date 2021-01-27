@@ -3,10 +3,9 @@
 require_once "Repository.php";
 require_once __DIR__ . '/../models/Club.php';
 
-class ClubRepository extends Repository
-{
-    public function getClub(int $id): ?Club
-    {
+class ClubRepository extends Repository {
+
+    public function getClub(int $id): ?Club {
         $statement = $this->database->connect()->prepare('
             SELECT * FROM public.clubs WHERE id_clubs = :id
         ');
@@ -16,7 +15,7 @@ class ClubRepository extends Repository
         $club = $statement->fetch(PDO::FETCH_ASSOC);
 
         if ($club == false) {
-            return null;
+            return null; // TODO exception
         }
 
         return new Club(
@@ -27,8 +26,7 @@ class ClubRepository extends Repository
         );
     }
 
-    public function getClubs(): array
-    {
+    public function getClubs(): array {
         $result = [];
 
         $statement = $this->database->connect()->prepare('
@@ -49,8 +47,7 @@ class ClubRepository extends Repository
         return $result;
     }
 
-    public function addClub(Club $club): void
-    {
+    public function addClub(Club $club): void {
         $date = new DateTime(); // TODO add creation time to table
         $statement = $this->database->connect()->prepare('
             INSERT INTO clubs(name, description, image)
@@ -64,8 +61,7 @@ class ClubRepository extends Repository
         ]);
     }
 
-    public function getClubByTitle(string $searchString)
-    {
+    public function getClubByTitle(string $searchString) {
         $searchString = '%' . strtolower($searchString) . '%';
 
         $statememt = $this->database->connect()->prepare('
@@ -90,8 +86,7 @@ class ClubRepository extends Repository
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addMemberToClub($club, $userId)
-    {
+    public function addMemberToClub($club, $userId) {
         $statement = $this->database->connect()->prepare('
             INSERT INTO users_clubs(id_user, id_club)
             VALUES(?, ?)
