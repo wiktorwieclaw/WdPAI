@@ -49,10 +49,10 @@ function createMember(member) {
     //const image = clone.querySelector("img");
     //image.src = `/public/uploads/${club.image}`;
 
-    const name = clone.querySelector("h3");
+    const name = clone.querySelector("#name");
     name.innerHTML = member.name;
 
-    const surname = clone.querySelector("p");
+    const surname = clone.querySelector("#surname");
     surname.innerHTML = member.surname;
 
     memberContainer.appendChild(clone);

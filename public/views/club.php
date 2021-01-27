@@ -18,8 +18,8 @@
                 <h3>Members</h3>
                 <?php foreach ($members as $member): ?>
                     <a class="member" href="/profile/<?= $member['id_users'] ?>">
-                        <h3><?= $member['name'] ?></h3>
-                        <p><?= $member['surname'] ?></p>
+                        <p id="name"><?= $member['name'] ?></p>
+                        <p id="surname"><?= $member['surname'] ?></p>
                     </a>
                 <?php endforeach; ?>
             </div>
@@ -29,8 +29,9 @@
 </body>
 
 <template id="member-template">
+    <h3>Members</h3>
     <a class="member">
-        <h3>name</h3>
-        <p>surname</p>
+        <p id="name">name</p>
+        <p id="surname">surname</p>
     </a>
 </template>
