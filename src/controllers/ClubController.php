@@ -3,6 +3,7 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Club.php';
 require_once __DIR__.'/../repository/ClubRepository.php';
+require_once __DIR__.'/../repository/UserRepository.php';
 
 class ClubController extends AppController {
 
@@ -12,26 +13,34 @@ class ClubController extends AppController {
 
     private array $messages = [];
     private ClubRepository $clubRepository;
+    private UserRepository $userRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->clubRepository = new ClubRepository();
+        $this->userRepository = new UserRepository();
     }
 
     public function club(string $id) {
+        if($this->isUserSession()) {
+            // TODO
+        }
+
         if(empty($id)) {
             $this->goToSubpage("clubs");
         }
 
         $club = $this->clubRepository->getClub($id);
 
+        $isAdmin = $this->isAdmin();
+
         if($club === null) {
             $this->goToSubpage("clubs");
         }
 
         $members = $this->clubRepository->getClubMembers($id);
-        $this->render("club", ["club" => $club, "members" => $members]);
+        $this->render("club", ["club" => $club, "members" => $members, "isAdmin" => $isAdmin]);
     }
 
     public function clubs() {
@@ -52,6 +61,13 @@ class ClubController extends AppController {
             $this->clubs();
         }
         $this->render('add-club', ['messeges' => $this->messages]);
+    }
+
+    public function deleteClub(string $id) {
+        if($this->isPost() && $this->isAdmin()) {
+            $this->clubRepository->deleteClub(intval($id));
+        }
+        $this->goToSubpage('clubs');
     }
 
     public function search() {
@@ -83,7 +99,7 @@ class ClubController extends AppController {
         }
     }
 
-    private function validate(array $file) : bool {
+    private function validate(array $file): bool {
         if($file['size'] > self::MAX_FILE_SIZE) {
             $this->messages[] = 'File is too large.';
             return false;
@@ -95,5 +111,11 @@ class ClubController extends AppController {
         }
 
         return true;
+    }
+
+    private function isAdmin(): bool {
+        $email = $_COOKIE['userSession'];
+        $user = $this->userRepository->getUserByEmail($email);
+        return $user->getRole() === "admin";
     }
 }

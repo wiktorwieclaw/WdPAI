@@ -7,8 +7,9 @@ class UserRepository extends Repository
 {
     public function getUserByEmail(string $email) : ?User {
         $statement = $this->database->connect()->prepare('
-            SELECT * FROM users u LEFT JOIN users_details ud 
-            ON u.id_user_details = ud.id WHERE email = :email
+            SELECT * FROM users_view
+            WHERE users_view.email = :email
+                
         ');
         $statement->bindParam(':email', $email, PDO::PARAM_STR);
         $statement->execute();
@@ -20,13 +21,19 @@ class UserRepository extends Repository
         }
 
         return new User(
-            $user['email'], $user['password'], $user['name'], $user['surname'], $user['id_users']
+            $user['email'],
+            $user['password'],
+            $user['name'],
+            $user['surname'],
+            $user['role_name'],
+            $user['id_users']
         );
     }
 
-    public function getUserDetailsById(int $id) : ?User {
+    public function getUserById(int $id) : ?User {
         $statement = $this->database->connect()->prepare('
-            SELECT * FROM users u JOIN users_details ON u.id_user_details = users_details.id WHERE u.id_users = :id
+            SELECT * FROM users_view
+            WHERE users_view.id_users = :id
         ');
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         $statement->execute();
@@ -38,7 +45,12 @@ class UserRepository extends Repository
         }
 
         return new User(
-            $user['email'], $user['password'], $user['name'], $user['surname'], $user['id_users']
+            $user['email'],
+            $user['password'],
+            $user['name'],
+            $user['surname'],
+            $user['role_name'],
+            $user['id_users']
         );
     }
 

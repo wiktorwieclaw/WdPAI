@@ -61,16 +61,24 @@ class ClubRepository extends Repository {
         ]);
     }
 
+    public function deleteClub(int $id) {
+        $statement = $this->database->connect()->prepare('
+            DELETE FROM clubs WHERE id_clubs = :id;
+       ');
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+    }
+
     public function getClubByTitle(string $searchString) {
         $searchString = '%' . strtolower($searchString) . '%';
 
-        $statememt = $this->database->connect()->prepare('
+        $statement = $this->database->connect()->prepare('
             SELECT * FROM clubs WHERE LOWER(name) LIKE :search OR LOWER(description) LIKE :search
         ');
-        $statememt->bindParam(':search', $searchString, PDO::PARAM_STR);
-        $statememt->execute();
+        $statement->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $statement->execute();
 
-        return $statememt->fetchAll(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getClubMembers($club) {

@@ -16,7 +16,7 @@ class ProfileController extends AppController {
         if(!$id) {
             $id = intval($_COOKIE['userId']);
         }
-        $profile = $this->userRepo->getUserDetailsById($id);
+        $profile = $this->userRepo->getUserById($id);
         $this->render("profile", ["user"=>$profile]);
     }
 }

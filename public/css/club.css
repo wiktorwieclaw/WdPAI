@@ -6,10 +6,17 @@
     width: 100%;
 }
 
+.club-page-container .column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+}
+
 .club-page-container .club-info {
     display: flex;
     flex-direction: column;
-    width: 50vw;
+    width: 5vw;
 }
 
 .club-page-container .member-container {

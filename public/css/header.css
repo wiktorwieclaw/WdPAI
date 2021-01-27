@@ -41,7 +41,7 @@ nav > img {
     position: relative;
     background: black;
     height: 6px;
-    border-radius: 1em;
+    border-radius: 0.1em;
     width: 2.2em;
     display: block;
     transition: transform 0.5s, rotate 0.5s;
@@ -52,7 +52,7 @@ nav > img {
     position: absolute;
     background: black;
     height: 100%;
-    border-radius: 1em;
+    border-radius: 0.1em;
     width: 100%;
     transition: inherit;
 }
