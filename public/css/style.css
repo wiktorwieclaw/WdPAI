@@ -67,18 +67,8 @@ button {
     border: none;
     color: black;
     margin: 1em;
+    line-height: 3.0em;
 }
-
-/*.container {*/
-/*    width: 100vw;*/
-/*    height: 100vh;*/
-/*    background: #FFFFFF 0 0 no-repeat padding-box;*/
-
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*}*/
 
 input, textarea {
     background-color: transparent;
