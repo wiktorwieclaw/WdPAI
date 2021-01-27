@@ -16,6 +16,7 @@
                         This is a place for people interested in CubeSats, where members of science clubs from
                         universities around the world can share information and help each other.
                     </p>
+                    <a class="login-button" href="login">Log In</a>
                 </div>
                 <img src="/public/img/cubesat-in-space.svg">
             </div>
@@ -28,8 +29,6 @@
                     </p>
                 </div>
             </div>
-            <a href="login">LOGIN</a>
-            <a href="signup">SIGN UP</a>
         </div>
     </div>
 </div>

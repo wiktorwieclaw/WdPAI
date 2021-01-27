@@ -44,11 +44,17 @@ class ClubController extends AppController {
     }
 
     public function clubs() {
+        if(!$this->isUserSession()) {
+            $this->goToSubpage('home');
+        }
+
         $clubs = $this->clubRepository->getClubs();
         $this->render('clubs', ['clubs' => $clubs]);
     }
 
     public function addClub() {
+        $this->userSessionVerification();
+
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
@@ -60,7 +66,7 @@ class ClubController extends AppController {
 
             $this->clubs();
         }
-        $this->render('add-club', ['messeges' => $this->messages]);
+        $this->render('add-club', ['messages' => $this->messages]);
     }
 
     public function deleteClub(string $id) {
@@ -71,20 +77,24 @@ class ClubController extends AppController {
     }
 
     public function search() {
-         $constentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        $this->userSessionVerification();
 
-         if($constentType === "application/json") {
-             $content = trim(file_get_contents("php://input"));
-             $decoded = json_decode($content,true);
+        $constantType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
-             header('Content-type: application/json');
-             http_response_code(200);
+        if($constantType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content,true);
 
-             echo json_encode($this->clubRepository->getClubByTitle($decoded['search']));
-         }
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->clubRepository->getClubByTitle($decoded['search']));
+        }
     }
 
     public function join() {
+        $this->userSessionVerification();
+
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
         if($contentType === "application/json") {

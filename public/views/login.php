@@ -23,6 +23,7 @@
                 </div>
                 <input name="email" type="text" placeholder="Email">
                 <input name="password" type="password" placeholder="Password">
+                <a href="signup">Don't have an account? Sign up.</a>
                 <button type="submit">CONTINUE</button>
             </form>
         </section>

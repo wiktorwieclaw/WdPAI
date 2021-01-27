@@ -37,9 +37,10 @@
 
 .clubs-grid img {
     border-radius: 50%;
-    width: 10vh;
-    max-height: 5em;
-    max-width: 5em;
+    height: 5em;
+    width: 5em;
+    object-fit: cover;
+    object-position: center;
 }
 
 .club {

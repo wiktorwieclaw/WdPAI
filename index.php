@@ -6,7 +6,6 @@ $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
 
 Routing::get('', 'DefaultController');
-Routing::get('feed', 'DefaultController');
 Routing::get('clubs', 'ClubController');
 Routing::get('profile', 'ProfileController');
 Routing::get('club', 'ClubController');

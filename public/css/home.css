@@ -35,3 +35,16 @@
     width: 40%;
 }
 
+.login-button {
+    display: block;
+    width: 6em;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    margin: 0;
+}
+
+.login-button:active {
+
+}
+

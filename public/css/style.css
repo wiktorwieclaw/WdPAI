@@ -7,6 +7,11 @@ body {
     font-family: sans-serif;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
 .content {
     display: flex;
     justify-content: center;
@@ -59,7 +64,7 @@ form {
     width: 20vw;
 }
 
-button {
+button, .login-button {
     background: #EFEFEF 0 0 no-repeat padding-box;
     border-radius: 4px;
     opacity: 1;
@@ -68,6 +73,13 @@ button {
     color: black;
     margin: 1em;
     line-height: 3.0em;
+    outline: none;
+    position: relative;
+}
+
+button:hover, .login-button:hover {
+    top: 1px;
+    left: 1px;
 }
 
 input, textarea {
@@ -112,14 +124,6 @@ li>a{
     color: black;
 }
 
-.post{
-    height: 20vh;
-    width: 20vw;
-    color: lightcoral;
-    border: 1px solid black;
-    margin-bottom: 1em;
-}
-
 section.club-form {
     display: flex;
     flex-direction: column;
@@ -136,7 +140,6 @@ section.club-form {
 
 .no-valid {
     border: 3px solid red;
-    border-radius: 1em;
     box-shadow: 0 0 0.2em red;
     outline: none;
 }

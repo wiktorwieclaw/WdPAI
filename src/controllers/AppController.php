@@ -39,4 +39,10 @@ class AppController {
     protected function isUserSession(): bool {
         return isset($_COOKIE['userSession']);
     }
+
+    protected function userSessionVerification() {
+        if($this->isUserSession()) {
+            $this->goToSubpage("");
+        }
+    }
 }

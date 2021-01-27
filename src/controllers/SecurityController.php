@@ -20,9 +20,7 @@ class SecurityController extends AppController {
     }
 
     public function login() { // TODO this func is too long
-        if($this->isUserSession()) {
-            $this->goToSubpage("clubs");
-        }
+        $this->userSessionVerification();
 
         if(!$this->isPost()) {
             return $this->render('login');
@@ -52,9 +50,7 @@ class SecurityController extends AppController {
     }
 
     public function signup() {
-        if($this->isUserSession()) {
-            $this->goToSubpage("clubs");
-        }
+        $this->userSessionVerification();
 
         if(!$this->isPost()) {
             return $this->render('signup');
@@ -65,6 +61,11 @@ class SecurityController extends AppController {
         $confirmedPassword = $_POST['confirm-password'];
         $name = $_POST['name'];
         $surname = $_POST['surname'];
+
+        $message = $this->validateInput($email, $name, $surname, $password, $confirmedPassword);
+        if($message !== null) {
+            return $this->render('signup', ['messages' => [$message]]);
+        }
 
         if($this->userRepository->getUserByEmail($email) !== null) {
             return $this->render('signup', ['messages' => ["Account with this email already exists"]]);
@@ -85,5 +86,29 @@ class SecurityController extends AppController {
             setcookie('userSession', null, time() - 1000);
         }
         $this->goToSubpage('');
+    }
+
+    private function validateInput($email, $name, $surname, $password, $confirmedPassword): ?string {
+        if(empty($name)) {
+            return "Name cannot be empty";
+        }
+
+        if(empty($surname)) {
+            return "Surname cannot be empty";
+        }
+
+        if(!preg_match('/\S+@\S+\.\S+$/',$email)) {
+            return "This is not an email";
+        }
+
+        if(!preg_match('/^(?=.*\d)(?=.*[A-Z]).{6,100}$/', $password)) {
+            return "Password has to be 6 characters long and it needs to contain one uppercase letter and one number";
+        }
+
+        if($password !== $confirmedPassword) {
+            return "Given passwords are not the same";
+        }
+
+        return null;
     }
 }
