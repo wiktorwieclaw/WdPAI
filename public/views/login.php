@@ -21,8 +21,8 @@
                     }
                     ?>
                 </div>
-                <input name="email" type="text" placeholder="Email">
-                <input name="password" type="password" placeholder="Password">
+                <input name="email" type="text" placeholder="Email" maxlength="254">
+                <input name="password" type="password" placeholder="Password" maxlength="100">
                 <a href="signup">Don't have an account? Sign up.</a>
                 <button type="submit">CONTINUE</button>
             </form>

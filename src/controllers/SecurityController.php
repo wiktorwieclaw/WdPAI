@@ -4,7 +4,8 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 
-class SecurityController extends AppController {
+class SecurityController extends AppController
+{
 
     // TODO make registering more secure
     private UserRepository $userRepository;
@@ -15,14 +16,16 @@ class SecurityController extends AppController {
         $this->userRepository = new UserRepository();
     }
 
-    public function isAdmin(int $id): bool {
+    public function isAdmin(int $id): bool
+    {
         // TODO
     }
 
-    public function login() { // TODO this func is too long
+    public function login()
+    { // TODO this func is too long
         $this->userSessionVerification();
 
-        if(!$this->isPost()) {
+        if (!$this->isPost()) {
             return $this->render('login');
         }
 
@@ -31,28 +34,29 @@ class SecurityController extends AppController {
 
         $user = $this->userRepository->getUserByEmail($email);
 
-        if(!$user) {
+        if (!$user) {
             return $this->render('login', ['messages' => ['User doesnt exist.']]);
         }
 
-        if($user->getEmail() !== $email) {
+        if ($user->getEmail() !== $email) {
             return $this->render('login', ['messages' => ['User with this email doesn\'t exist.']]);
         }
 
-        if(!password_verify($password, $user->getPassword())) {
+        if (!password_verify($password, $user->getPassword())) {
             return $this->render('login', ['messages' => ['Wrong password.']]);
         }
 
-        setcookie('userSession', $user->getEmail(), time()+3600);
-        setcookie('userId', $user->getId(), time()+3600);
+        setcookie('userSession', $user->getEmail(), time() + 3600);
+        setcookie('userId', $user->getId(), time() + 3600);
 
         $this->goToSubpage("clubs");
     }
 
-    public function signup() {
+    public function signup()
+    {
         $this->userSessionVerification();
 
-        if(!$this->isPost()) {
+        if (!$this->isPost()) {
             return $this->render('signup');
         }
 
@@ -62,16 +66,16 @@ class SecurityController extends AppController {
         $name = $_POST['name'];
         $surname = $_POST['surname'];
 
-        $message = $this->validateInput($email, $name, $surname, $password, $confirmedPassword);
-        if($message !== null) {
-            return $this->render('signup', ['messages' => [$message]]);
+        $messages = $this->validateInput($email, $name, $surname, $password, $confirmedPassword);
+        if (!empty($messages)) {
+            return $this->render('signup', ['messages' => $messages]);
         }
 
-        if($this->userRepository->getUserByEmail($email) !== null) {
+        if ($this->userRepository->getUserByEmail($email) !== null) {
             return $this->render('signup', ['messages' => ["Account with this email already exists"]]);
         }
 
-        if($password !== $confirmedPassword) {
+        if ($password !== $confirmedPassword) {
             return $this->render('signup', ['messages' => ["Please provide proper password"]]);
         }
 
@@ -81,34 +85,67 @@ class SecurityController extends AppController {
         return $this->render('login', ['messages' => ['You\'ve been succesfully registered!']]);
     }
 
-    public function logout() {
-        if($this->isUserSession()) {
+    public function logout()
+    {
+        if ($this->isUserSession()) {
             setcookie('userSession', null, time() - 1000);
         }
         $this->goToSubpage('');
     }
 
-    private function validateInput($email, $name, $surname, $password, $confirmedPassword): ?string {
-        if(empty($name)) {
-            return "Name cannot be empty";
+    private function validateInput($email, $name, $surname, $password, $confirmedPassword): ?array
+    {
+        $messages = $this->validateName($name);
+
+        $messages = array_merge($messages, $this->validateSurname($surname));
+
+        if (strlen($email) > 254) {
+            $messages[] = "Email is too long";
         }
 
-        if(empty($surname)) {
-            return "Surname cannot be empty";
+        if (!preg_match('/\S+@\S+\.\S+$/', $email)) {
+            $messages[] = "This is not an email";
         }
 
-        if(!preg_match('/\S+@\S+\.\S+$/',$email)) {
-            return "This is not an email";
+        if (!preg_match('/^(?=.*\d)(?=.*[A-Z]).{6,100}$/', $password)) {
+            $messages[]
+                = "Password has to be 6 characters long and it needs to contain one uppercase letter and one number";
         }
 
-        if(!preg_match('/^(?=.*\d)(?=.*[A-Z]).{6,100}$/', $password)) {
-            return "Password has to be 6 characters long and it needs to contain one uppercase letter and one number";
+        if ($password !== $confirmedPassword) {
+            $messages[] = "Given passwords are not the same";
         }
 
-        if($password !== $confirmedPassword) {
-            return "Given passwords are not the same";
+        return $messages;
+    }
+
+
+    private function validateName($name): array {
+        $messages = [];
+
+        if (strlen($name) > 35) {
+            $messages[] = "Name is too long";
         }
 
-        return null;
+        if (empty($name)) {
+            $messages[] = "Name cannot be empty";
+        }
+
+        return $messages;
+    }
+
+
+    private function validateSurname($surname): array {
+        $messages = [];
+
+        if (strlen($surname) > 35) {
+            $messages[] = "Surname is too long";
+        }
+
+        if (empty($surname)) {
+            $messages[] = "Surname cannot be empty";
+        }
+
+        return $messages;
     }
 }

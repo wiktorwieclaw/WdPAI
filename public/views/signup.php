@@ -17,16 +17,16 @@
                     <?php
                     if (isset($messages)) {
                         foreach ($messages as $message) {
-                            echo $message;
+                            echo $message."<br>";
                         }
                     }
                     ?>
                 </div>
-                <input name="name" type="text" placeholder="Name">
-                <input name="surname" type="text" placeholder="Surname">
-                <input name="email" type="text" placeholder="Email">
-                <input name="password" type="password" placeholder="Password">
-                <input name="confirm-password" type="password" placeholder="Confirm Password">
+                <input name="name" type="text" placeholder="Name" maxlength="35">
+                <input name="surname" type="text" placeholder="Surname" maxlength="35">
+                <input name="email" type="text" placeholder="Email" maxlength="254">
+                <input name="password" type="password" placeholder="Password" maxlength="100">
+                <input name="confirm-password" type="password" placeholder="Confirm Password" maxlength="100">
                 <button type="submit">CONTINUE</button>
             </form>
     </div>
