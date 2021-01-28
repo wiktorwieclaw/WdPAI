@@ -45,7 +45,7 @@ class ClubController extends AppController {
 
     public function clubs() {
         if(!$this->isUserSession()) {
-            $this->goToSubpage('home');
+            $this->goToSubpage("");
         }
 
         $clubs = $this->clubRepository->getClubs();

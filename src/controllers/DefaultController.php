@@ -5,6 +5,11 @@ require_once 'AppController.php';
 class DefaultController extends AppController {
     
     public function index() {
-        $this->isUserSession() ? $this->goToSubpage('clubs') : $this->render('home');
+        return $this->isUserSession() ? $this->goToSubpage('clubs') : $this->render('home');
+    }
+
+    public function home() {
+        $this->userSessionVerification();
+        return $this->goToSubpage('');
     }
 }
