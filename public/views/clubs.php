@@ -19,7 +19,6 @@
                     <a id="<?= $club->getId() ?>" class="club" href="/club/<?= $club->getId() ?>">
                         <img src="public/uploads/<?= $club->getImage() ?>">
                         <h3><?= $club->getTitle() ?></h3>
-                        <p><?= $club->getDescription() ?></p>
                     </a>
                 <?php endforeach; ?>
             </div>
@@ -32,6 +31,5 @@
     <a id="" class="club">
         <img src="">
         <h3>title</h3>
-        <p>description</p>
     </a>
 </template>

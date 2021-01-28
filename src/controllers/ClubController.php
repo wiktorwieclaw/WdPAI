@@ -8,7 +8,7 @@ require_once __DIR__.'/../repository/UserRepository.php';
 class ClubController extends AppController {
 
     const MAX_FILE_SIZE = 1024*1024;
-    const SUPPORTED_TYPES = ['image/png', 'image/jpg'];
+    const SUPPORTED_TYPES = ['image/png', 'image/jpg', 'image/jpeg'];
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private array $messages = [];
@@ -64,7 +64,7 @@ class ClubController extends AppController {
             $club = new Club($_POST['title'], $_POST['description'], $_FILES['file']['name']);
             $this->clubRepository->addClub($club);
 
-            $this->clubs();
+            $this->goToSubpage("clubs");
         }
         $this->render('add-club', ['messages' => $this->messages]);
     }

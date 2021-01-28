@@ -51,8 +51,5 @@ function createClub(club) {
     const title = clone.querySelector("h3");
     title.innerHTML = club.name;
 
-    const description = clone.querySelector("p");
-    description.innerHTML = club.description;
-
     clubsContainer.appendChild(clone);
 }

@@ -29,33 +29,6 @@ a {
     margin: 0;
 }
 
-.side-bar {
-    width:30vw;
-    height: 100vh;
-    position: fixed;
-    top:0;
-    left: -100%;
-    background-color: #EFEFEF;
-    z-index: 1;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    transition: left 0.3s, visibility 0.3s;
-    visibility: hidden;
-}
-
-.side-bar-show {
-    left: 0;
-    transition: left 0.3s, visibility 0.3s;
-    visibility: visible;
-}
-
-.side-bar>ul {
-    display: flex;
-    height: 100%;
-    align-items: center;
-}
-
 form {
     display: flex;
     flex-direction: column;
@@ -103,25 +76,6 @@ input, textarea {
     .login-container, .logo {
         width: 100%;
     }
-}
-
-ul {
-    margin: 0;
-    list-style-type: none;
-    display: flex;
-    padding: 0;
-    width: 30%;
-    justify-content: flex-end;
-}
-
-li {
-    float: left;
-    margin-right: 1vw;
-}
-
-li>a{
-    text-decoration: none;
-    color: black;
 }
 
 section.club-form {

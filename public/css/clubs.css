@@ -1,7 +1,6 @@
 .clubs-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -11,7 +10,9 @@
 .clubs-container #search-bar {
     display: flex;
     flex-direction: row;
-    width: 40%;
+    width: 30%;
+    align-items: center;
+    padding-top: 2vh;
 }
 
 #search-bar > button {
@@ -30,22 +31,42 @@
 .clubs-grid {
     align-self: center;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 22vw);
+    grid-auto-rows: 15vw;
     grid-gap: 2em;
     padding: 2em;
 }
 
-.clubs-grid img {
-    border-radius: 50%;
-    height: 5em;
-    width: 5em;
+.club {
+    box-shadow: 0 0.2em 1em lightgrey;
+    /*width: 30vw;*/
+    /*height: 25vh;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.club img {
+    top: 0;
+    left: 0;
+    height: 88%;
+    width: 100%;
     object-fit: cover;
     object-position: center;
 }
 
-.club {
-    border: 1px solid black;
-    width: 30vw;
-    height: 15vw;
-    display: block;
+.club h3 {
+    height: 12%;
+    width: 100%;
+    background-color: #EFEFEF;
+    margin: 0;
+    color: black;
+    line-height: 100%;
+    font-size: 1.2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: normal;
 }
