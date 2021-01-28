@@ -9,7 +9,7 @@ class DefaultController extends AppController {
     }
 
     public function home() {
-        $this->userSessionVerification();
+        $this->allowIfUserSession();
         return $this->goToSubpage('');
     }
 }

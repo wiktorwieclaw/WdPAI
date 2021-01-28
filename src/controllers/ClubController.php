@@ -53,7 +53,7 @@ class ClubController extends AppController {
     }
 
     public function addClub() {
-        $this->userSessionVerification();
+        $this->allowIfUserSession();
 
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
@@ -77,7 +77,7 @@ class ClubController extends AppController {
     }
 
     public function search() {
-        $this->userSessionVerification();
+        $this->allowIfUserSession();
 
         $constantType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
@@ -93,7 +93,7 @@ class ClubController extends AppController {
     }
 
     public function join() {
-        $this->userSessionVerification();
+        $this->allowIfUserSession();
 
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 

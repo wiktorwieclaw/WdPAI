@@ -10,20 +10,17 @@ class SecurityController extends AppController
     // TODO make registering more secure
     private UserRepository $userRepository;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
         $this->userRepository = new UserRepository();
     }
 
-    public function isAdmin(int $id): bool
-    {
+    public function isAdmin(int $id): bool {
         // TODO
     }
 
-    public function login()
-    { // TODO this func is too long
-        $this->userSessionVerification();
+    public function login() {
+        $this->prohibitIfUserSession();
 
         if (!$this->isPost()) {
             return $this->render('login');
@@ -52,9 +49,8 @@ class SecurityController extends AppController
         $this->goToSubpage("clubs");
     }
 
-    public function signup()
-    {
-        $this->userSessionVerification();
+    public function signup() {
+        $this->prohibitIfUserSession();
 
         if (!$this->isPost()) {
             return $this->render('signup');
@@ -85,16 +81,14 @@ class SecurityController extends AppController
         return $this->render('login', ['messages' => ['You\'ve been succesfully registered!']]);
     }
 
-    public function logout()
-    {
+    public function logout() {
         if ($this->isUserSession()) {
             setcookie('userSession', null, time() - 1000);
         }
         $this->goToSubpage('');
     }
 
-    private function validateInput($email, $name, $surname, $password, $confirmedPassword): ?array
-    {
+    private function validateInput($email, $name, $surname, $password, $confirmedPassword): ?array {
         $messages = $this->validateName($name);
 
         $messages = array_merge($messages, $this->validateSurname($surname));

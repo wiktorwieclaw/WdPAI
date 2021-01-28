@@ -40,7 +40,13 @@ class AppController {
         return isset($_COOKIE['userSession']);
     }
 
-    protected function userSessionVerification() {
+    protected function allowIfUserSession() {
+        if(!$this->isUserSession()) {
+            $this->goToSubpage("");
+        }
+    }
+
+    protected function prohibitIfUserSession() {
         if($this->isUserSession()) {
             $this->goToSubpage("");
         }
