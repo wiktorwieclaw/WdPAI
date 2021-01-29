@@ -68,7 +68,7 @@ class UserRepository extends Repository
     }
 
     public function addUser(User $user) {
-        $statement  = $this->database->connect()->prepare('
+        $statement = $this->database->connect()->prepare('
             INSERT INTO users_details(name, surname)
             VALUES (?, ?)
         ');
@@ -88,5 +88,27 @@ class UserRepository extends Repository
             $user->getPassword(),
             $this->getUserDetailsId($user)
         ]);
+    }
+
+    public function getUsersClubs($userId) {
+        $statement = $this->database->connect()->prepare('
+        SELECT * FROM users_clubs 
+            JOIN clubs c ON users_clubs.id_club = c.id_clubs
+        WHERE id_user = :user_id
+        ');
+        $statement->bindParam(":user_id", $userId);
+        $statement->execute();
+        $clubs = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $result = [];
+        foreach ($clubs as $club) {
+            $result[] = new Club(
+                $club['name'],
+                $club['description'],
+                $club['image'],
+                $club['id_clubs']
+            );
+        }
+        return $result;
     }
 }
