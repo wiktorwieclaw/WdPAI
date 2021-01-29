@@ -14,7 +14,7 @@
                     <img src="/public/uploads/<?= $club->getImage() ?>">
                     <h1><?= $club->getTitle() ?></h1>
                     <p id="description"><?= $club->getDescription() ?></p>
-                    <button id="join-button" value="<?= $club->getId() ?>">join</button>
+                    <button id="join-button" value="<?= $club->getId() ?>">Join</button>
                     <?php if($isAdmin): ?>
                         <form method="post" action="/deleteClub/<?= $club->getId() ?>"><button>Delete</button></form>
                     <?php endif; ?>
