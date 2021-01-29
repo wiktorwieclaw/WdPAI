@@ -2,7 +2,6 @@
 <head>
     <?php include("head.php") ?>
     <link rel="stylesheet" type="text/css" href="/public/css/login-signup.css">
-    <title>LOGIN PAGE</title>
 </head>
 <body>
 <div class="base-container">

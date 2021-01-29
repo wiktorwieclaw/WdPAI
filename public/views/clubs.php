@@ -3,7 +3,6 @@
     <?php include("head.php") ?>
     <script type="text/javascript" src="/public/js/search.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/public/css/clubs.css">
-    <title>CLUBS</title>
 </head>
 <body>
 <div class="base-container">

@@ -2,7 +2,6 @@
 <head>
     <?php include("head.php") ?>
     <link rel="stylesheet" type="text/css" href="/public/css/home.css">
-    <title>HOME</title>
 </head>
 <body>
 <div class="base-container">

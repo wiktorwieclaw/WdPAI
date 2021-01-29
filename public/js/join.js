@@ -49,11 +49,9 @@ function createMember(member) {
     //const image = clone.querySelector("img");
     //image.src = `/public/uploads/${club.image}`;
 
-    const name = clone.querySelector("#name");
-    name.innerHTML = member.name;
+    const nameSurname = clone.querySelector("#name-surname");
 
-    const surname = clone.querySelector("#surname");
-    surname.innerHTML = member.surname;
+    nameSurname.innerHTML = member.name + " " + member.surname;
 
     memberContainer.appendChild(clone);
 }

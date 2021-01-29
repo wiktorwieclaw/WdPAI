@@ -4,9 +4,7 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 
-class SecurityController extends AppController
-{
-
+class SecurityController extends AppController {
     // TODO make registering more secure
     private UserRepository $userRepository;
 
@@ -43,8 +41,8 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['Wrong password.']]);
         }
 
-        setcookie('userSession', $user->getEmail(), time() + 3600);
-        setcookie('userId', $user->getId(), time() + 3600);
+        setcookie('userSession', $user->getEmail(), time() + 3600 * 2);
+        setcookie('userId', $user->getId(), time() + 3600 * 2);
 
         $this->goToSubpage("clubs");
     }
@@ -84,6 +82,7 @@ class SecurityController extends AppController
     public function logout() {
         if ($this->isUserSession()) {
             setcookie('userSession', null, time() - 1000);
+            setcookie('userId', null, time() - 1000);
         }
         $this->goToSubpage('');
     }

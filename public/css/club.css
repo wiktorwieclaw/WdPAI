@@ -13,12 +13,27 @@
     align-items: center;
 }
 
+#right-column {
+    min-height: 70vh;
+    border-left: black solid 1px;
+    width: 20%;
+}
+
 .club-page-container .club-info {
     display: flex;
     flex-direction: column;
-    width: 5vw;
+    width: 30vw;
+}
+
+.club-page-container img {
+    width: 30%;
 }
 
 .club-page-container .member-container {
 
+}
+
+.club-page-container .member {
+    display: flex;
+    flex-direction: row;
 }

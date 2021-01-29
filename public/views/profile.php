@@ -2,7 +2,6 @@
 <head>
     <?php include("head.php") ?>
     <script type="text/javascript" src="./public/js/search.js" defer></script>
-    <title>PROFILE</title>
 </head>
 <body>
 <div class="base-container">

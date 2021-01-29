@@ -13,6 +13,8 @@ class ProfileController extends AppController {
     }
 
     public function profile($id) {
+        $this->allowIfUserSession();
+
         if(!$id) {
             $id = intval($_COOKIE['userId']);
         }

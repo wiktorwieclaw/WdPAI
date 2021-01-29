@@ -3,7 +3,6 @@
     <?php include("head.php") ?>
     <script type="text/javascript" src="/public/js/validate.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/public/css/login-signup.css">
-    <title>SIGNUP</title>
 </head>
 <body>
 <div class="base-container">

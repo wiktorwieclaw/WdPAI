@@ -1,0 +1,30 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+section.club-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+}
+
+textarea {
+    resize: none;
+}
+
+.club-form > form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.club-form p {
+    align-self: flex-start;
+    margin-bottom: 0;
+    padding-left: 5vw;
+}
