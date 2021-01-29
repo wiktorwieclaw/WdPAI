@@ -4,8 +4,6 @@ const sideBar =  document.querySelector(".side-bar");
 
 let isVisible = false;
 
-// todo different buttons when not logged in
-
 hamburgerContainer.addEventListener("click", function (){
     if(isVisible) {
         sideBar.classList.remove("side-bar-show");

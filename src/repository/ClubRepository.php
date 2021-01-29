@@ -15,7 +15,7 @@ class ClubRepository extends Repository {
         $club = $statement->fetch(PDO::FETCH_ASSOC);
 
         if ($club == false) {
-            return null; // TODO exception
+            return null;
         }
 
         return new Club(
@@ -48,7 +48,7 @@ class ClubRepository extends Repository {
     }
 
     public function addClub(Club $club): void {
-        $date = new DateTime(); // TODO add creation time to table
+        $date = new DateTime();
         $statement = $this->database->connect()->prepare('
             INSERT INTO clubs(name, description, image)
             VALUES(?, ?, ?)

@@ -23,9 +23,7 @@ class ClubController extends AppController {
     }
 
     public function club(string $id) {
-        if($this->isUserSession()) {
-            // TODO
-        }
+        $this->allowIfUserSession();
 
         if(empty($id)) {
             $this->goToSubpage("clubs");

@@ -5,16 +5,11 @@ require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 
 class SecurityController extends AppController {
-    // TODO make registering more secure
     private UserRepository $userRepository;
 
     public function __construct() {
         parent::__construct();
         $this->userRepository = new UserRepository();
-    }
-
-    public function isAdmin(int $id): bool {
-        // TODO
     }
 
     public function login() {

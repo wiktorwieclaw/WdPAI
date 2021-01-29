@@ -17,7 +17,7 @@ class UserRepository extends Repository
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
         if($user == false) {
-            return null; // TODO Exception
+            return null;
         }
 
         return new User(
@@ -41,7 +41,7 @@ class UserRepository extends Repository
         $user = $statement->fetch(PDO::FETCH_ASSOC);
 
         if($user == false) {
-            return null; // TODO Exception
+            return null;
         }
 
         return new User(
