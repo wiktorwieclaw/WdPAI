@@ -128,11 +128,11 @@ nav > img {
 }
 
 .side-bar li {
-    padding: 0.5em;
+    margin: 0.5em;
 }
 
 .side-bar a {
-    padding: 1em;
+    margin: 1em;
     font-weight: bold;
     font-size: 1.5em;
 }
